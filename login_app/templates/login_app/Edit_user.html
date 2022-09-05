@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}
+    Contact Us
+{% endblock %}
+{% block content %}
+
+    <section class="contact-us">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="down-contact">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="sidebar-item contact-form">
+                                    <div class="sidebar-heading">
+                                        <h2>Edit Your ProFile</h2>
+                                    </div>
+                                    <div class="content">
+                                        <form id="contact" action="" method="post">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="col-lg-12">
+                                                        {{ form }}
+                                                        {# {% if form.non_field_errors %}#}
+                                                        {#<div class="alert alert-danger">{{ form.non_field_errors }}</div>#}
+                                                        {#{% endif %}#}
+                                                        {#{% if form.name.errors %}#}
+                                                        {#<div class="alert alert-danger">{{ form.name.errors }}</div>#}
+                                                        {#{% endif %}#}
+                                                        {#{{ form.name }}#}
+                                                        {# app blog froms.py #}
+                                                        {#{% if form.username.errors %}#}
+                                                        {#<div class="alert alert-danger">{{ form.username.errors }}</div>#}
+                                                        {#{% endif %}#}
+                                                        {#{{ form.username }}#}
+
+                                                        <div class="col-lg-12">
+                                                            <fieldset>
+                                                                <button type="submit" id="form-submit"
+                                                                        class="main-button">
+                                                                    Send
+                                                                </button>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div id="map">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

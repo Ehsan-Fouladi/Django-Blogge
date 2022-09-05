@@ -1,0 +1,64 @@
+{% load static %}
+{% load i18n %}
+<header class="">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url "heme:heme" %}" style="height: 221px"><h2>Stand Blog<em>.</em></h2></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item {% if request.resolver_match.url_name == "heme" %}active{% endif %} ">
+                        <a class="nav-link" href="{% url "heme:heme" %}">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% static "/about.html" %}">About Us</a>
+                    </li>
+                    <li class="nav-item {% if request.resolver_match.url_name == "article-list" %}active{% endif %} ">
+                        <a class="nav-link" href="{% url "blog:article-list" %}">ALL ARTICLES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% static "post.html" %}">Post Details</a>
+                    </li>
+                    <li class="nav-item {% if request.resolver_match.url_name == "contact_article" %}active{% endif %}">
+                        <a class="nav-link" href="{% url "blog:contact_article" %}">Contact Us</a>
+                    </li>
+                    {# model and views user $ #}
+                    {# user model post file as deta $ #}
+                    <li class="nav-item">
+
+                        {% if request.user.is_authenticated %}
+                            <div>
+                                {% if request.user.firstname %}
+                                    <a class="nav-link" href="#">{{ request.user.first_name }}</a>
+                                {% else %}
+                                    <a class="nav-link" href="#">{{ request.user.username }}</a>
+                                {% endif %}
+                                {% if user.profile.image %}
+                                    <img src="{{ user.profile.image.url }}" alt="profile"
+                                         style="width: 100px;height: 100px;border: 3px solid springgreen;display: inline-block;margin: 2%;background-color: sandybrown">
+                                {% else %}
+                                    <img src="{% static "images/icon/e1.jpg" %}" alt="profile"
+                                         style="width:100px;height:100px; border: 3px solid mediumvioletred;display: inline-block;margin: 2%;">
+                                {% endif %}
+                                <a href="{% url "assets:EditProFile" %}" style="color: blue; border: #0056b3">
+                                    <spen class="button btn-block">EditProFile</spen>
+                                    <br>
+                                    <a href="{% url "assets:logout" %}" style="color: red">
+                                        <spen class="button btn-block">logout</spen>
+                                </a>
+                            </div>
+                        {% else %}
+                            <a class="nav-link {% if request.resolver_match.url_name == "login" %} active {% endif %} " href="{% url "assets:login" %}">login</a>
+                            <a class="nav-link {% if request.resolver_match.url_name == "register" %} active {% endif %}" href="{% url "assets:register" %}">register</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

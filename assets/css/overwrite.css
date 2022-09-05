@@ -1,0 +1,9 @@
+@font-face {
+    font-family: danstevis;
+    src: url("../fonts/danstevis.otf");
+    font-variant: normal;
+    font-style: normal;
+}
+* {
+    font-family: danstevis;
+}
